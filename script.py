@@ -6,6 +6,19 @@ import pause
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
+message = Mail(
+    from_email="compsci@cambot.com",
+    to_emails="lukebraithwaite7@gmail.com",
+    subject="App Up",
+    html_content="The App is now up and running"
+)
+
+try:
+    sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+    sg.send(message)
+except Exception as e:
+    print(e)
+
 while True:
     url = "https://www.undergraduate.study.cam.ac.uk/courses/computer-science"
     response = requests.get(url)
