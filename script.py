@@ -8,10 +8,7 @@ from sendgrid.helpers.mail import Mail
 
 while True:
     url = "https://www.undergraduate.study.cam.ac.uk/courses/computer-science"
-
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
-    response = requests.get(url, headers=headers)
+    response = requests.get(url)
 
     soup = BeautifulSoup(response.text, "html.parser")
     text = soup.find(
